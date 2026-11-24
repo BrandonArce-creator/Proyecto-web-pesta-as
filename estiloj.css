@@ -1,0 +1,508 @@
+:root {
+  --fondo-suave: #fff9f8;
+  --blanco: #ffffff;
+  --rosa-claro: #fdecef;
+  --rosa-borde: #f4d2d8;
+  --rosa-principal: #c96e7d;
+  --rosa-oscuro: #a85261;
+  --texto-oscuro: #2c2225;
+  --texto-medio: #635358;
+  --radio: 16px;
+  --sombra-suave: 0 8px 24px rgba(178, 86, 102, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--fondo-suave);
+  color: var(--texto-oscuro);
+  line-height: 1.6;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ENCABEZADO */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Si después agregás algo a la derecha, queda separado */
+  padding: 12px 20px;
+}
+
+.marca-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;     /* Centra verticalmente el texto y la foto */
+  justify-content: flex-start; /* Evita que se separen hacia los bordes */
+  gap: 12px;             /* Espacio entre "Poonte Linda" y la foto */
+}
+
+.marca-header .logo {
+  margin: 0;             /* Evita márgenes por defecto del h1 que desalinean */
+}
+
+.marca-header .avatar-jose {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 0;        /* Anula cualquier margin-left: auto que lo mueva a la derecha */
+  flex-shrink: 0;
+}
+
+/* PORTADA */
+.hero {
+  padding: 4rem 0 3.5rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--rosa-claro) 0%, var(--fondo-suave) 100%);
+}
+
+.ubicacion {
+  display: inline-block;
+  background-color: var(--blanco);
+  border: 1px solid var(--rosa-borde);
+  color: var(--rosa-oscuro);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.hero h2 {
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  line-height: 1.2;
+  color: var(--texto-oscuro);
+  max-width: 680px;
+  margin: 0 auto 1rem;
+}
+
+.subtitulo {
+  color: var(--texto-medio);
+  max-width: 540px;
+  margin: 0 auto 1.8rem;
+  font-size: 1.02rem;
+}
+
+.btn-principal {
+  display: inline-block;
+  background-color: var(--rosa-principal);
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(201, 110, 125, 0.28);
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-principal:hover {
+  background-color: var(--rosa-oscuro);
+  transform: translateY(-2px);
+}
+
+/* SECCIONES GENERALES */
+section {
+  padding: 3.5rem 0;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 1.85rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 0.4rem;
+}
+
+.descripcion-seccion {
+  text-align: center;
+  color: var(--texto-medio);
+  margin-bottom: 2rem;
+}
+
+/* SERVICIOS Y PRECIOS */
+.grid-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.card-servicio {
+  background-color: var(--blanco);
+  border: 1px solid var(--rosa-borde);
+  border-radius: var(--radio);
+  padding: 1.4rem;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.card-servicio h3 {
+  font-size: 1.15rem;
+  color: var(--rosa-oscuro);
+}
+
+.card-servicio p {
+  color: var(--texto-medio);
+  font-size: 0.94rem;
+}
+
+.precio {
+  align-self: flex-start;
+  background-color: var(--rosa-claro);
+  color: var(--rosa-oscuro);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+/* CARRUSEL DE TRABAJOS */
+.carrusel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid-galeria {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0.5rem;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.grid-galeria::-webkit-scrollbar {
+  display: none;
+}
+
+.item-galeria {
+  flex: 0 0 280px;
+  scroll-snap-align: center;
+  background-color: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  border: 1px solid var(--rosa-borde);
+  box-shadow: var(--sombra-suave);
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.item-galeria:hover {
+  transform: translateY(-4px);
+  border-color: var(--rosa-principal);
+  box-shadow: 0 12px 26px rgba(178, 86, 102, 0.16);
+}
+
+.item-galeria img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background-color: var(--rosa-claro);
+}
+
+.item-galeria figcaption {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.item-galeria figcaption strong {
+  color: var(--texto-oscuro);
+  font-size: 1rem;
+}
+
+.item-galeria figcaption span {
+  color: var(--rosa-principal);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.btn-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--rosa-borde);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--rosa-principal);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(178, 86, 102, 0.18);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-flecha:hover {
+  background-color: var(--rosa-principal);
+  color: var(--blanco);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.btn-izq {
+  left: -14px;
+}
+
+.btn-der {
+  right: -14px;
+}
+
+/* INSTAGRAM */
+.card-ig {
+  background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--blanco) 100%);
+  border: 1px solid var(--rosa-borde);
+  border-radius: var(--radio);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+}
+
+.ig-badge {
+  display: inline-block;
+  background-color: var(--blanco);
+  color: var(--rosa-oscuro);
+  border: 1px solid var(--rosa-borde);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.ig-usuario {
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+  margin-bottom: 0.6rem;
+}
+
+.ig-texto {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+  color: var(--texto-medio);
+}
+
+.btn-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--rosa-oscuro);
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-ig:hover {
+  opacity: 0.93;
+  transform: translateY(-2px);
+}
+
+/* FORMULARIO DE TURNOS */
+.form-turno {
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: var(--blanco);
+  border: 1px solid var(--rosa-borde);
+  border-radius: var(--radio);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--texto-oscuro);
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--rosa-borde);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto-oscuro);
+  background-color: var(--fondo-suave);
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--rosa-principal);
+  box-shadow: 0 0 0 3px rgba(201, 110, 125, 0.16);
+}
+
+.btn-whatsapp {
+  margin-top: 0.4rem;
+  background-color: var(--rosa-principal);
+  color: var(--blanco);
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--rosa-oscuro);
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--rosa-claro);
+  border-top: 1px solid var(--rosa-borde);
+  text-align: center;
+  padding: 1.75rem 0;
+  color: var(--texto-medio);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 600px) {
+  .item-galeria {
+    flex: 0 0 250px;
+  }
+
+  .btn-izq {
+    left: 2px;
+  }
+
+  .btn-der {
+    right: 2px;
+  }
+}
+
+/* PAUTAS DEL TURNO */
+.card-pautas {
+  max-width: 680px;
+  margin: 0 auto;
+  background-color: var(--blanco);
+  border: 1px solid var(--rosa-borde);
+  border-left: 4px solid var(--rosa-principal);
+  border-radius: var(--radio);
+  padding: 1.85rem 1.6rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.pautas-etiqueta {
+  display: inline-block;
+  background-color: var(--rosa-claro);
+  color: var(--rosa-oscuro);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+
+.card-pautas h2 {
+  text-align: left;
+  font-size: 1.55rem;
+  margin-bottom: 0.45rem;
+}
+
+.pautas-intro {
+  color: var(--texto-medio);
+  font-size: 0.96rem;
+  margin-bottom: 1.15rem;
+}
+
+.lista-pautas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lista-pautas li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--texto-oscuro);
+  font-size: 0.95rem;
+}
+
+.lista-pautas li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--rosa-principal);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+
+.titulo-whatsapp {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 0.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.icono-wsp-titulo {
+  width: 1em;       /* Mismo tamaño que la altura de la fuente del h2 */
+  height: 1em;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.marca-agua-autor {
+  position: fixed;
+  right: 14px;
+  bottom: 10px;
+  z-index: 5;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rosa-oscuro);
+  opacity: 0.32;
+  pointer-events: none;
+  user-select: none;
+}
